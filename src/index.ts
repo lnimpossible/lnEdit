@@ -1,12 +1,13 @@
-require("@/plugin/jscolor.js")
-import '@/styles/index.scss';
+require("@/plugin/jscolor")
+import '@/styles/index';
 const wid: any = window
-const actionbar = document.getElementById("header")
+const actionbar: HTMLElement = document.getElementById("header")
 
-const exec = (command: any, value: any = null) => {
+const exec = (command: string, value: string | null = null) => {
   document.execCommand(command, false, value);
 };
-const actions = {
+
+const actions: any = {
   bold: {
     icon: '<b>B</b>',
     title: 'Bold',
@@ -33,18 +34,16 @@ const actions = {
   color: {
     icon: '<button id="colorButton" />',
     title: 'color',
-    result: (e: any) => {
-      console.log(e)
-      // exec('foreColor', 'red')
+    result: () => {
+      // exec('foreColor', 'red') 由于颜色选取不是简单的点击事件，需要在色板change的时候操作exec
     }
   }
-  // …
+  // … others button
 }
 for (let k in actions) {
-  // @ts-ignore
   const v: any = actions[k];
   // 新建一个按钮元素
-  const button = document.createElement('button')
+  const button: HTMLElement = document.createElement('button')
   // 给按钮加上 css 样式
   button.className = 'item'
   // 把 icon 属性作为内容显示出来
@@ -55,8 +54,8 @@ for (let k in actions) {
   // 将创建的按钮添加到工具栏上
   actionbar.appendChild(button)
 }
-var myPicker = new wid.jscolor('#colorButton', {
-  onChange: function (e: any) {
+const myPicker: void = new wid.jscolor('#colorButton', {
+  onChange: function () {
     const rgba: string = this.toRGBAString()
     exec('foreColor', rgba)
   }

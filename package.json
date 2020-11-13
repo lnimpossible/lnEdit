@@ -18,12 +18,7 @@
     "url": "https://github.com/lnimpossible/lnEdit/issues"
   },
   "homepage": "https://github.com/lnimpossible/lnEdit#readme",
-  "dependencies": {
-    "@types/jquery": "^3.5.4",
-    "spectrum-colorpicker": "^1.8.1"
-  },
   "devDependencies": {
-    "@types/lodash": "^4.14.165",
     "css-loader": "^5.0.1",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.0.5",
