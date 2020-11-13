@@ -5,8 +5,10 @@ const actionbar: HTMLElement = document.getElementById("header")
 let lastRange: any = null
 document.getElementById("inputBody").onmouseleave = function() {
   var selObj = window.getSelection(); // Selection对象
+  // 判断是否框选了, 开始偏移量与结束偏移量不相同，所以为false.
   if(selObj.isCollapsed === false) {
     var range  = selObj.getRangeAt(0); //  Range 对象
+    // 保存上次的框选range
     lastRange = range
   }
 }
@@ -14,6 +16,7 @@ const exec = (command: string, value: string | null = null) => {
   var selObj = window.getSelection(); // Selection对象
   if(selObj.isCollapsed === true) {
     selObj.removeAllRanges()
+    // 使用上次的框选区域range
     selObj.addRange(lastRange)
   }
   document.execCommand(command, false, value);
