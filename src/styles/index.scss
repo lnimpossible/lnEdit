@@ -1,0 +1,39 @@
+
+$headerHeight: 40px;
+
+*{
+  margin:0;
+  padding: 0;
+  // box-sizing: border-box;
+}
+
+#content {
+  width: 100%;
+  height: auto;
+  .editWrap {
+    width: 1200px;
+    height: 500px;
+    background-color: gray;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    #header{
+      height: $headerHeight;
+      line-height: $headerHeight;
+      .item{
+        display: inline-block;
+        // height: 100%;
+        vertical-align: middle;
+        height: 30px;
+        border: 1px solid #fff;
+        padding: 5px 12px;
+      }
+    }
+    #inputBody{
+      height: 300px;
+      background-color: #fff;
+      flex: 1;
+      border: 1px solid gray;
+    }
+  }
+}
