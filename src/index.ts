@@ -2,8 +2,20 @@ require("@/plugin/jscolor")
 import '@/styles/index';
 const wid: any = window
 const actionbar: HTMLElement = document.getElementById("header")
-
+let lastRange: any = null
+document.getElementById("inputBody").onmouseleave = function() {
+  var selObj = window.getSelection(); // Selection对象
+  if(selObj.isCollapsed === false) {
+    var range  = selObj.getRangeAt(0); //  Range 对象
+    lastRange = range
+  }
+}
 const exec = (command: string, value: string | null = null) => {
+  var selObj = window.getSelection(); // Selection对象
+  if(selObj.isCollapsed === true) {
+    selObj.removeAllRanges()
+    selObj.addRange(lastRange)
+  }
   document.execCommand(command, false, value);
 };
 
